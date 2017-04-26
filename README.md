@@ -84,8 +84,10 @@ binary_combo = ih.combined_threshold(dst,sobel_kernel=13
 
 ```python
 # Apply each of the thresholding functions
-gradx = abs_sobel_thresh(image, orient='x', sobel_kernel=sobel_kernel, thresh=(sobel_threshold_x_min, sobel_threshold_x_max))
-grady = abs_sobel_thresh(image, orient='y', sobel_kernel=sobel_kernel, thresh=(sobel_threshold_y_min, sobel_threshold_y_max))
+gradx = abs_sobel_thresh(image, orient='x', sobel_kernel=sobel_kernel
+                        , thresh=(sobel_threshold_x_min, sobel_threshold_x_max))
+grady = abs_sobel_thresh(image, orient='y', sobel_kernel=sobel_kernel
+                        , thresh=(sobel_threshold_y_min, sobel_threshold_y_max))
 mag_binary = mag_thresh(image, sobel_kernel=sobel_kernel, thresh=(mag_threshold_min, mag_threshold_max))
 dir_binary = dir_threshold(image, sobel_kernel=sobel_kernel, thresh=(dir_threshold_min, dir_threshold_max))
 col_binary = col_threshold(image, thresh=(col_threshold_min, col_threshold_max))
@@ -131,6 +133,7 @@ Then I did some other stuff and fit my lane lines with a 2nd order polynomial ki
 ![alt text][image5]
 
 My approach was windowing through the histogram.
+<br>
 ![alt_text][image51]
 
 #### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
