@@ -148,6 +148,7 @@ I implemented this step in lines 9 through 46 in my code in `video_helper.py` in
 
 <br>
 oveview of all the steps that were carried out are present in the python notebook `advanced_lane_finding.ipynb`
+<br>
 
 ---
 
