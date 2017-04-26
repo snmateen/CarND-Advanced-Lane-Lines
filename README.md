@@ -20,6 +20,7 @@ The goals / steps of this project are the following:
 [image3]: ./examples/binary_combo.jpg "Binary Example"
 [image4]: ./examples/warped_straight_lines.jpg "Warp Example"
 [image5]: ./examples/binary_warped.jpg "Fit Visual"
+[image51]: ./examples/histogram.png "Histogram"
 [image6]: ./examples/lane_drawn.jpg "Output"
 [video1]: ./project_video_output.mp4 "Video"
 
@@ -62,7 +63,34 @@ To demonstrate this step, I will describe how I apply the distortion correction 
 
 #### 2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
 
-I used a combination of color and gradient thresholds to generate a binary image (thresholding steps at lines # through # in `another_file.py`).  Here's an example of my output for this step.  (note: this is not actually from one of the test images)
+I used a combination of color and gradient thresholds to generate a binary image (thresholding steps at lines 106 through 223 in `image_helper.py`).  
+
+I considered following thresholds and kernel size for creating the binary image.
+
+```python
+# warp the image after distortion correction
+dst = ih.undistort(image)
+
+# apply the combined threshold
+binary_combo = ih.combined_threshold(dst,sobel_kernel=13
+                                   , sobel_threshold_x_min=150, sobel_threshold_x_max=255
+                                   , sobel_threshold_y_min=150, sobel_threshold_y_max=255
+                                   , mag_threshold_min=80, mag_threshold_max=255
+                                   , dir_threshold_min=1, dir_threshold_max=1.3
+                                   , col_threshold_min=200, col_threshold_max=255)
+```
+
+`combined_threshold` function is the combination of sobel, gradient magnitude, direction and colore threshold applied.
+
+```python
+# Apply each of the thresholding functions
+gradx = abs_sobel_thresh(image, orient='x', sobel_kernel=sobel_kernel, thresh=(sobel_threshold_x_min, sobel_threshold_x_max))
+grady = abs_sobel_thresh(image, orient='y', sobel_kernel=sobel_kernel, thresh=(sobel_threshold_y_min, sobel_threshold_y_max))
+mag_binary = mag_thresh(image, sobel_kernel=sobel_kernel, thresh=(mag_threshold_min, mag_threshold_max))
+dir_binary = dir_threshold(image, sobel_kernel=sobel_kernel, thresh=(dir_threshold_min, dir_threshold_max))
+col_binary = col_threshold(image, thresh=(col_threshold_min, col_threshold_max))
+```
+Here's an example of my output for this step.  (note: this is not actually from one of the test images)
 
 ![alt text][image3]
 
@@ -101,6 +129,8 @@ I verified that my perspective transform was working as expected by drawing the 
 Then I did some other stuff and fit my lane lines with a 2nd order polynomial kinda like this:
 
 ![alt text][image5]
+
+My approach was windowing through the histogram.
 
 #### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
 
