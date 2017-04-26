@@ -131,6 +131,7 @@ Then I did some other stuff and fit my lane lines with a 2nd order polynomial ki
 ![alt text][image5]
 
 My approach was windowing through the histogram.
+![alt_text][image51]
 
 #### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
 
@@ -148,7 +149,7 @@ I implemented this step in lines 9 through 46 in my code in `video_helper.py` in
 
 #### 1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (wobbly lines are ok but no catastrophic failures that would cause the car to drive off the road!).
 
-Here's a [link to my video result](./project_video.mp4)
+Here's a [link to my video result](./project_video_output.mp4)
 
 ---
 
@@ -156,4 +157,4 @@ Here's a [link to my video result](./project_video.mp4)
 
 #### 1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
 
-Here I'll talk about the approach I took, what techniques I used, what worked and why, where the pipeline might fail and how I might improve it if I were going to pursue this project further.  
+After calibrating the camera using the images present in "camera_cal" folder, I applied distortion correct and prepestive transformation (warping), followed by applied color and gradient thresholds, based on the threshold limits described above, now, this was a lot of experimentation phase, this step might fail depending upon the brightness and variation in the image background. It might be good idea to tune the kernel, threshold parameters depending upon the time of camera images (day or night) and weather pattern.
