@@ -142,13 +142,16 @@ I did this in lines 418 through 444 in my code in `image_helper.py`
 
 #### 6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
 
-I implemented this step in lines 9 through 46 in my code in `video_helper.py` in the function `process_image()`.  Here is an example of my result on a test image:
-
-![alt text][image6]
+I implemented this step in lines 9 through 46 in my code in `video_helper.py` in the function `process_image()`.  
 
 <br>
 oveview of all the steps that were carried out are present in the python notebook `advanced_lane_finding.ipynb`.
 <br>
+
+Here is an example of my result on a test image:
+
+![alt text][image6]
+
 
 ---
 
