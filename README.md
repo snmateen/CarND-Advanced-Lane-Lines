@@ -144,9 +144,7 @@ I did this in lines 418 through 444 in my code in `image_helper.py`
 
 I implemented this step in lines 9 through 46 in my code in `video_helper.py` in the function `process_image()`.  
 
-<br>
 oveview of all the steps that were carried out are present in the python notebook `advanced_lane_finding.ipynb`.
-<br>
 
 Here is an example of my result on a test image:
 
